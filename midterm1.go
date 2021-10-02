@@ -277,7 +277,7 @@ is a pointer to another Node. That other Node of course will itself contain a
 field pointing to a Node.  By following these pointers we can walk through a
 series of Nodes. If `next` is nil, the series of Nodes ends.
 
-Write a function HasCycle that walks through the series of Nodes staarting with
+Write a function HasCycle that walks through the series of Nodes starting with
 the parameter n and returns true if you can ever return back to a node you have
 already visited, and false otherwise.
 
@@ -298,6 +298,23 @@ type Node struct {
 }
 
 func HasCycle(n *Node) bool {
+
+	// head node equals null or only contains 1 node
+	if n == nil || n.next == nil {
+		return false
+	}
+
+	slow := n
+	fast := n.next
+
+	for slow != fast {
+		if fast == nil || fast.next == nil { // no cycle detected
+			return false
+		}
+		slow = slow.next      // slow => 1 step
+		fast = fast.next.next // fast =>2 step
+	}
+
 	return true
 }
 

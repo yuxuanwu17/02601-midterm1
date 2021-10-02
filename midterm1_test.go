@@ -88,3 +88,7 @@ func TestSquareNumbers(t *testing.T) {
 	}
 	fmt.Println(SquareNumbers(nums4))
 }
+
+func TestHasCycle(t *testing.T) {
+
+}
