@@ -150,9 +150,6 @@ func FirstUnique(nums []int) int {
 	}
 
 	return current
-	//for _, v := range list {
-	//	count[v]++
-	//}
 }
 
 /*******************************************************************************************
@@ -173,6 +170,41 @@ otherwise).
 *******************************************************************************************/
 
 func IsCircularPermutation(a, b []int) bool {
+	//dictA := make(map[int]int)
+	//dictB := make(map[int]int)
+	//
+	//for idx, val := range a {
+	//	dictA[idx] = val
+	//}
+	//for idx, val := range b {
+	//	dictB[idx] = val
+	//}
+	startIdxB := 0
+	count := 0
+	for idx, val := range b {
+		if a[0] == val {
+			startIdxB = idx
+			count++
+		}
+	}
+
+	for i := 0; i < len(a); i++ {
+		if i+startIdxB < len(a) {
+			if a[i] != b[i+startIdxB] {
+				return false
+			}
+		} else {
+			if a[i] != b[i+startIdxB-len(a)] {
+				return false
+			}
+
+		}
+	}
+	if count == 0 || len(a) != len(b) {
+		return false
+	}
+	//fmt.Println(dictA)
+	//fmt.Println(dictB)
 	return true
 }
 

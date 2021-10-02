@@ -39,3 +39,16 @@ func TestFirstUnique(t *testing.T) {
 	fmt.Println(FirstUnique([]int{7, 8, 2, 8, 2, 7, 8}))
 	fmt.Println(FirstUnique([]int{8, 8, 8, 9, 8, 6, 8, 8}))
 }
+
+func TestIsCircularPermutation(t *testing.T) {
+	a := []int{1, 7, 8, 10, 31, 14}
+	b := []int{10, 31, 14, 1, 7, 8}
+	//b := []int{7, 8, 1, 10, 14, 31}
+
+	c := []int{2, 3, 3, 4}
+	//d := []int{3,3,4,2}
+	d := []int{3, 4, 4, 2}
+
+	fmt.Println(IsCircularPermutation(a, b))
+	fmt.Println(IsCircularPermutation(c, d))
+}
