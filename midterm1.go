@@ -35,10 +35,6 @@
 
 package main
 
-import (
-	"sort"
-)
-
 /*******************************************************************************************
 Problem 1. Write a function that takes in a list []bool and returns the number
 of times the list switches from true to  false or from false to true when read
@@ -119,24 +115,44 @@ Examples:
     FirstUnique([]int{8, 8, 8, 9, 8, 6, 8, 8}) should return 9.
 *******************************************************************************************/
 
-func FirstUnique(list []int) int {
-	sort.Ints(list)
+func FirstUnique(nums []int) int {
 
-	//fmt.Println(list)
-	count := 1
-	for i := 0; i < len(list)-1; i++ {
-		left := i
-		right := i + 1
-		if list[left] == list[right] {
-			count++
-		} else if list[left] != list[right] && count == 1 {
-			return list[left]
+	var queue []int
+	hashMap := make(map[int]bool)
+
+	for i := 0; i < len(nums); i++ {
+		_, condition := hashMap[nums[i]]
+		if !condition {
+			hashMap[nums[i]] = false
 		} else {
-			count = 1
+			hashMap[nums[i]] = true
 		}
 	}
 
-	return 0
+	for i := 0; i < len(nums); i++ {
+		if !hashMap[nums[i]] {
+			queue = append(queue, nums[i])
+		}
+	}
+
+	if len(queue) == 0 {
+		return 0
+	}
+	current := queue[0]
+	for hashMap[current] {
+		if len(queue) > 1 {
+			queue = queue[1:]
+		}
+		if len(queue) == 0 {
+			return 0
+		}
+		current = queue[0]
+	}
+
+	return current
+	//for _, v := range list {
+	//	count[v]++
+	//}
 }
 
 /*******************************************************************************************
