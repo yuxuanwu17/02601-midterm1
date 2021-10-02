@@ -241,8 +241,34 @@ for some integer x). The output list should be in the same order as the input li
 Example: If your input is []int{1,5,9,9,20} the returned value should be []int{1,9,9}.
 *******************************************************************************************/
 
-func SquareNumbers(a []int) []int {
-	return []int{}
+func SquareNumbers(nums []int) []int {
+	// iterate through the given nums
+
+	// return list to store the satisfied value
+	res := make([]int, 0)
+
+	for _, num := range nums {
+		if isSquareNumbers(num) {
+			res = append(res, num)
+		}
+	}
+
+	return res
+}
+
+// binary search to find the target val
+func isSquareNumbers(num int) bool {
+	for left, right := 1, num; left <= right; {
+		mid := (left + right) / 2
+		if mid*mid > num { // left region
+			right = mid - 1
+		} else if mid*mid < num { // right region
+			left = mid + 1
+		} else {
+			return true
+		}
+	}
+	return false
 }
 
 /*******************************************************************************************

@@ -73,3 +73,18 @@ func TestContains(t *testing.T) {
 	fmt.Println(Contains(l5, l6))
 
 }
+
+func TestSquareNumbers(t *testing.T) {
+	nums := []int{1, 5, 9, 9, 20}
+	fmt.Println(SquareNumbers(nums))
+	nums2 := []int{1, 5, 9, 9, 20, 21, 23, 36}
+	fmt.Println(SquareNumbers(nums2))
+	nums3 := []int{1, 5, 9, 9, 20}
+	fmt.Println(SquareNumbers(nums3))
+
+	nums4 := make([]int, 0)
+	for i := 0; i < 1000; i++ {
+		nums4 = append(nums4, i)
+	}
+	fmt.Println(SquareNumbers(nums4))
+}
