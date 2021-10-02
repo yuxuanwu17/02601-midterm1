@@ -170,15 +170,6 @@ otherwise).
 *******************************************************************************************/
 
 func IsCircularPermutation(a, b []int) bool {
-	//dictA := make(map[int]int)
-	//dictB := make(map[int]int)
-	//
-	//for idx, val := range a {
-	//	dictA[idx] = val
-	//}
-	//for idx, val := range b {
-	//	dictB[idx] = val
-	//}
 	startIdxB := 0
 	count := 0
 	for idx, val := range b {
@@ -203,8 +194,6 @@ func IsCircularPermutation(a, b []int) bool {
 	if count == 0 || len(a) != len(b) {
 		return false
 	}
-	//fmt.Println(dictA)
-	//fmt.Println(dictB)
 	return true
 }
 
@@ -217,6 +206,30 @@ occur at least that many times in l1.
 *******************************************************************************************/
 
 func Contains(l1, l2 []int) bool {
+	// make a map of l1, key is the val of l1, val is the word frequency
+	countMapL1 := make(map[int]int)
+
+	// store the val of l1
+	for _, val := range l1 {
+		countMapL1[val]++
+	}
+
+	// l2 is the subset of l1
+	// Iterate the l2's value
+	for _, val := range l2 {
+		// check whether the val of l2 could find val in countMapl1
+		if _, ok := countMapL1[val]; ok {
+			// found, the count --
+			countMapL1[val]--
+			if countMapL1[val] < 0 {
+				return false
+			}
+		} else {
+			return false
+		}
+	}
+	//fmt.Println(countMapL1)
+
 	return true
 }
 

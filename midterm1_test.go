@@ -6,6 +6,7 @@ import (
 )
 
 func TestCountSwitches(t *testing.T) {
+	fmt.Println("=======================第一题===================================")
 	booleanTest1 := []bool{true, true, false, false, true, false}
 	fmt.Println(CountSwitches(booleanTest1))
 	booleanTest2 := []bool{true, true, false, false, true, false, true, false}
@@ -13,7 +14,7 @@ func TestCountSwitches(t *testing.T) {
 }
 
 func TestLeftmostNegative(t *testing.T) {
-	fmt.Println("=============老师给的case========================")
+	fmt.Println("=======================第二题===================================")
 	test1 := [][]int{
 		{3, 4, -5, 1, 7},
 		{-10, 10, 10},
@@ -23,7 +24,6 @@ func TestLeftmostNegative(t *testing.T) {
 	}
 	fmt.Println(LeftmostNegative(test1))
 
-	fmt.Println("=============全是正数的情况=========================")
 	test2 := [][]int{
 		{3, 4, 5, 1, 7},
 		{10, 10, 10},
@@ -35,12 +35,14 @@ func TestLeftmostNegative(t *testing.T) {
 }
 
 func TestFirstUnique(t *testing.T) {
+	fmt.Println("=======================第三题===================================")
 	fmt.Println(FirstUnique([]int{2, 3, 4, 5, 2, 4, 5}))
 	fmt.Println(FirstUnique([]int{7, 8, 2, 8, 2, 7, 8}))
 	fmt.Println(FirstUnique([]int{8, 8, 8, 9, 8, 6, 8, 8}))
 }
 
 func TestIsCircularPermutation(t *testing.T) {
+	fmt.Println("=======================第四题===================================")
 	a := []int{1, 7, 8, 10, 31, 14}
 	b := []int{10, 31, 14, 1, 7, 8}
 	//b := []int{7, 8, 1, 10, 14, 31}
@@ -51,4 +53,23 @@ func TestIsCircularPermutation(t *testing.T) {
 
 	fmt.Println(IsCircularPermutation(a, b))
 	fmt.Println(IsCircularPermutation(c, d))
+}
+
+func TestContains(t *testing.T) {
+	fmt.Println("=======================第五题===================================")
+	// l2's 10 occurs 3 times, while l1 10 occurs 2 times => false
+	l1 := []int{1, 7, 8, 10, 10, 31, 14}
+	l2 := []int{10, 10, 10, 31, 14, 1, 7, 8}
+	fmt.Println(Contains(l1, l2))
+
+	// true
+	l3 := []int{1, 7, 8, 10, 31, 14}
+	l4 := []int{10, 31, 14, 1, 7, 8}
+	fmt.Println(Contains(l3, l4))
+
+	// true
+	l5 := []int{1, 7, 8, 10, 10, 31, 14}
+	l6 := []int{10, 31, 14, 1, 7, 8}
+	fmt.Println(Contains(l5, l6))
+
 }
