@@ -35,6 +35,10 @@
 
 package main
 
+import (
+	"sort"
+)
+
 /*******************************************************************************************
 Problem 1. Write a function that takes in a list []bool and returns the number
 of times the list switches from true to  false or from false to true when read
@@ -85,7 +89,7 @@ func LeftmostNegative(f [][]int) int {
 			}
 		}
 	}
-	1if len(storeFirstNegVal) == 0 {
+	if len(storeFirstNegVal) == 0 {
 		return -1
 	}
 
@@ -94,14 +98,14 @@ func LeftmostNegative(f [][]int) int {
 	return minIndex
 }
 
-func min(l []int) (min int) {
-	min = l[0]
-	for _, v := range l {
-		if v < min {
-			min = v
+func min(slice []int) int {
+	minVal := slice[0]
+	for _, v := range slice {
+		if v < minVal {
+			minVal = v
 		}
 	}
-	return
+	return minVal
 }
 
 /*******************************************************************************************
@@ -116,6 +120,22 @@ Examples:
 *******************************************************************************************/
 
 func FirstUnique(list []int) int {
+	sort.Ints(list)
+
+	//fmt.Println(list)
+	count := 1
+	for i := 0; i < len(list)-1; i++ {
+		left := i
+		right := i + 1
+		if list[left] == list[right] {
+			count++
+		} else if list[left] != list[right] && count == 1 {
+			return list[left]
+		} else {
+			count = 1
+		}
+	}
+
 	return 0
 }
 
