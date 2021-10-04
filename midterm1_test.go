@@ -43,16 +43,19 @@ func TestFirstUnique(t *testing.T) {
 
 func TestIsCircularPermutation(t *testing.T) {
 	fmt.Println("=======================第四题===================================")
-	a := []int{1, 7, 8, 10, 31, 14}
-	b := []int{10, 31, 14, 1, 7, 8}
-	//b := []int{7, 8, 1, 10, 14, 31}
+	// true
+	a := []int{2, 4, 5, 6, 7, 2}
+	b := []int{4, 5, 6, 7, 2, 2}
+	//b := []int{7, 8, 1, 10, 14, 31} // false case
 
+	//true
 	c := []int{2, 3, 3, 4}
-	//d := []int{3,3,4,2}
-	d := []int{3, 4, 4, 2}
+	d := []int{3, 3, 4, 2}
+	//d := []int{3, 4, 4, 2}
 
 	fmt.Println(IsCircularPermutation(a, b))
 	fmt.Println(IsCircularPermutation(c, d))
+	fmt.Println(IsCircularPermutation([]int{2, 2, 2, 3}, []int{3, 2, 2, 2}))
 }
 
 func TestContains(t *testing.T) {

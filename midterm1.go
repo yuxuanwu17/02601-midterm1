@@ -169,32 +169,61 @@ and returns true if one is a circular permutation of the other (and false
 otherwise).
 *******************************************************************************************/
 
+// 有问题
+// 相同的点可能有n处
+/*
+a := []int{2,2,2,3}
+b := []int{3,2,2,2}
+0->1
+1->2
+
+*/
+
 func IsCircularPermutation(a, b []int) bool {
-	startIdxB := 0
-	count := 0
-	for idx, val := range b {
-		if a[0] == val {
-			startIdxB = idx
-			count++
-		}
+
+	if len(a) != len(b) {
+		return false
 	}
 
 	for i := 0; i < len(a); i++ {
-		if i+startIdxB < len(a) {
-			if a[i] != b[i+startIdxB] {
-				return false
-			}
-		} else {
-			if a[i] != b[i+startIdxB-len(a)] {
-				return false
-			}
+		// create a slice to store the new array
+		temp := make([]int, 0)
 
+		temp = fillTheArray(temp, a, i)
+
+		if singleArrayCheck(temp, b) {
+			return true
 		}
+
 	}
-	if count == 0 || len(a) != len(b) {
+
+	return false
+}
+func singleArrayCheck(temp, b []int) bool {
+
+	if len(temp) != len(b) {
 		return false
 	}
+	for i := 0; i < len(temp); i++ {
+		if temp[i] != b[i] {
+			return false
+		}
+	}
+
 	return true
+}
+
+func fillTheArray(temp, a []int, startIdx int) []int {
+	for i := 0; i < len(a); i++ {
+		if i+startIdx < len(a) {
+			val := a[startIdx+i]
+			temp = append(temp, val)
+		} else {
+			val := a[startIdx+i-len(a)]
+			temp = append(temp, val)
+		}
+	}
+	return temp
 }
 
 /*******************************************************************************************
@@ -248,7 +277,7 @@ func SquareNumbers(nums []int) []int {
 	res := make([]int, 0)
 
 	for _, num := range nums {
-		if isSquareNumbers(num) {
+		if isSquareNumbers(num) || num == 0 {
 			res = append(res, num)
 		}
 	}
