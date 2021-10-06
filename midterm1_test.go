@@ -7,7 +7,7 @@ import (
 
 func TestCountSwitches(t *testing.T) {
 	fmt.Println("=======================第一题===================================")
-	booleanTest1 := []bool{true, true, false, false, true, false}
+	booleanTest1 := []bool{}
 	fmt.Println(CountSwitches(booleanTest1))
 	booleanTest2 := []bool{true, true, false, false, true, false, true, false}
 	fmt.Println(CountSwitches(booleanTest2))
@@ -44,18 +44,20 @@ func TestFirstUnique(t *testing.T) {
 func TestIsCircularPermutation(t *testing.T) {
 	fmt.Println("=======================第四题===================================")
 	// true
-	a := []int{2, 4, 5, 6, 7, 2}
-	b := []int{4, 5, 6, 7, 2, 2}
+	//a := []int{2, 4, 5, 6, 7, 2}
+	//b := []int{4, 5, 6, 7, 2, 2}
 	//b := []int{7, 8, 1, 10, 14, 31} // false case
 
 	//true
-	c := []int{2, 3, 3, 4}
-	d := []int{3, 3, 4, 2}
+	//c := []int{2, 3, 3, 4}
+	//d := []int{3, 3, 4, 2}
 	//d := []int{3, 4, 4, 2}
 
-	fmt.Println(IsCircularPermutation(a, b))
-	fmt.Println(IsCircularPermutation(c, d))
-	fmt.Println(IsCircularPermutation([]int{2, 2, 2, 3}, []int{3, 2, 2, 2}))
+	//fmt.Println(IsCircularPermutation(a, b))
+	//fmt.Println(IsCircularPermutation(c, d))
+	fmt.Println(IsCircularPermutation([]int{5, 6, 7, 8, 5, 12}, []int{8, 7, 6, 5, 12, 5}))
+	//fmt.Println(IsCircularPermutation([]int{2, 3, 3, 3}, []int{3, 2, 3, 3}))
+	//fmt.Println(IsCircularPermutation([]int{1,1,1,1,1,1 }, []int{1,2,1,1,1,1}))
 }
 
 func TestContains(t *testing.T) {
